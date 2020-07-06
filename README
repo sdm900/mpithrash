@@ -1,0 +1,43 @@
+MPITHRASH
+---------
+
+MPITHRASH is an MPI code which produces an large unpredictable MPI
+load on the network and MPI subsystem.  It is designed to test the
+scalability of the high performance interconnect for a general work
+load.
+
+Building
+--------
+
+ * Compile the code for the host platform, eg.
+       f90 -fast mpithrash.f90 -o mpithrash -lmpi
+
+ * Resolve any problems with the build
+
+Running the benchmark
+---------------------
+
+ * Run the benchmark on 16, 32, 64, 128 and N processors (where N
+   processors is the total number of processors being offered), eg.
+       mpirun -np 16 ./mpithrash
+       mpirun -np 32 ./mpithrash
+       mpirun -np 64 ./mpithrash
+       mpirun -np 128 ./mpithrash
+       mpirun -np N ./mpithrash
+
+ * Ensure that the maximum number of processors run is at least twice
+   the size of the largest SMP compute node (note that the vendor is
+   at least required to run the code upto 128 processors)
+
+ * All the output should be provided
+
+ * The TEST9.{16,32,64,128, N} result is the MB/s per process reported
+   by mpithrash
+
+Resoures
+--------
+
+ * Approximately 1GB per process
+
+ * Each benchmark runs in a few minutes (depending on network performance)
+
